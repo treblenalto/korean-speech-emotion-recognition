@@ -6,7 +6,6 @@ path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(path)
 
 df = pd.read_csv('../data/most_common.csv')
-print(df.head())
 columns = ['1번 감정', '2번 감정', '3번 감정', '4번 감정', '5번 감정']
 df_em = df[columns]
 
