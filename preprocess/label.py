@@ -2,7 +2,8 @@ import os
 import pandas as pd
 from collections import Counter
 
-df = pd.read_csv('../data/5차_10011.csv',encoding='CP949')
+path = os.path.dirname(os.path.abspath('__file__'))
+df = pd.read_csv(os.path.join(path, '../data5차_10011.csv'),encoding='CP949')
 columns = ['1번 감정', '2번 감정', '3번 감정', '4번 감정', '5번 감정']
 df_em = df[columns]
 
