@@ -1,8 +1,8 @@
 import os
 import pandas as pd 
 
-from ml_corpus import make_corpus
-from ml_display import display_results, plot_confusion_matrix
+from corpus import make_corpus
+from display import display_results, plot_confusion_matrix
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.model_selection import train_test_split 
 from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
