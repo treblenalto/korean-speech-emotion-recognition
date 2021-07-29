@@ -13,7 +13,6 @@ def plot_confusion_matrix(cm, classes,
     """
     plt.figure(figsize=(8,8))
     plt.imshow(cm, interpolation='nearest', cmap=cmap)
-    plt.title(title)
     plt.colorbar()
     tick_marks = np.arange(len(classes))
     plt.xticks(tick_marks, classes, rotation=45)
@@ -21,9 +20,9 @@ def plot_confusion_matrix(cm, classes,
 
     if normalize:
         cm = np.around(cm.astype('float') / cm.sum(axis=1)[:, np.newaxis], decimals = 2)
-        print("Normalized confusion matrix")
+        plt.title("Normalized Confusion Matrix")
     else:
-        print('Confusion matrix, without normalization')
+        plt.title('Confusion Matrix')
 
     # print(cm)
 
@@ -42,11 +41,11 @@ def display_results(y_test, pred_probs, norm = False):
     emotion_keys = ['Angry', 'Disgust', 'Fear', 'Happiness', 'Neutral', 'Sadness', 'Surprise']
     pred = np.argmax(pred_probs, axis=-1)
     print('Test Set Accuracy =  {0:.3f}'.format(accuracy_score(y_test, pred)))
-    print('Test Set F-score =  {0:.3f}'.format(f1_score(y_test, pred, average='macro')))
-    print('Test Set Precision =  {0:.3f}'.format(precision_score(y_test, pred, average='macro')))
-    print('Test Set Recall =  {0:.3f}'.format(recall_score(y_test, pred, average='macro')))
+    print('Test Set F-score =  {0:.3f}'.format(f1_score(y_test, pred, average='weighted', labels=np.unique(pred))))
+    print('Test Set Precision =  {0:.3f}'.format(precision_score(y_test, pred, average='weighted', labels=np.unique(pred))))
+    print('Test Set Recall =  {0:.3f}'.format(recall_score(y_test, pred, average='weighted')))
     print()
-    print(classification_report(y_test, pred))
+    print(classification_report(y_test, pred, labels=np.unique(pred)))
     print()
     # set norm = True to normalize confusion matrix
     plot_confusion_matrix(confusion_matrix(y_test, pred), classes=emotion_keys, normalize = norm)
