@@ -2,8 +2,7 @@ import os
 import pandas as pd 
 
 from ml_corpus import make_corpus
-from ml_display import display_results
-# from ml_display import  display_results, plot_confusion_matrix
+from ml_display import display_results, plot_confusion_matrix
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.model_selection import train_test_split 
 from sklearn.feature_extraction.text import TfidfTransformer, TfidfVectorizer
@@ -21,10 +20,29 @@ def main():
             'Sadness': 5,
             'Surprise': 6}
 
-    # Tokenize based on morphology analysis
+    # tokenize based on morphology analysis
     corpus = make_corpus(df['speech'])
-    print(corpus[:3])
+    
+    X = corpus                        # tokenized & cleansed data 
+    y = df['emotion'].map(cat_to_id)  # change y label to index values
 
+    # train-test-split
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42)
+
+    # tf-idf encoding
+    tfidf = TfidfVectorizer(max_features = 1000).fit(X_train)
+    X_train = tfidf.fit_transform(X_train).toarray()
+    X_test = tfidf.fit_transform(X_test).toarray()
+
+    # random forest classifier
+    rf = RandomForestClassifier()
+    rf.fit(X_train, y_train)
+
+    # predict
+    rf_pred = rf.predict_proba(X_test)
+
+    # result 
+    display_results(y_test, rf_pred)
 
 if __name__=="__main__":
     main()
