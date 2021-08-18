@@ -3,10 +3,10 @@
 ## Data Distribution
 - No missing value
 - Class Distribution
-<table><tr>
-    <td><img height="270" alt="bar_chart" src="https://user-images.githubusercontent.com/84002893/129836953-653759ff-8fd1-4f7b-8387-16a1082c938e.png"></td>
-    <td><img height="270" alt="pie_chart" src="https://user-images.githubusercontent.com/84002893/129836963-67bed37f-1fb0-4ef4-aae4-a180072ced44.png"></td>
-</tr></table>
+    <table><tr>
+        <td><img height="270" alt="bar_chart" src="https://user-images.githubusercontent.com/84002893/129836953-653759ff-8fd1-4f7b-8387-16a1082c938e.png"></td>
+        <td><img height="270" alt="pie_chart" src="https://user-images.githubusercontent.com/84002893/129836963-67bed37f-1fb0-4ef4-aae4-a180072ced44.png"></td>
+    </tr></table>
 
 - Length Distribution 
   - 발화문의 최대 길이 : 38
