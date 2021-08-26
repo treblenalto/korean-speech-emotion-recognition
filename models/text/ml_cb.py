@@ -12,7 +12,7 @@ def main():
     path = os.path.dirname(os.path.abspath(__file__))
     os.chdir(path)
 
-    df = pd.read_csv('../data/most_common.csv')
+    df = pd.read_csv('../../data/most_common.csv')
     cat_to_id = {'Angry': 0,
             'Disgust': 1,
             'Fear': 2,
